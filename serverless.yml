@@ -1,0 +1,24 @@
+service: backend-api
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: us-east-1
+
+plugins:
+  - serverless-offline
+
+functions:
+  buscarAgendas:
+    handler: src/agenda/controller.buscarAgendas
+    events:
+      - http:
+          path: agendas
+          method: get
+          
+  marcarAgendamento:
+    handler: src/agendamento/controller.marcarAgendamento
+    events:
+      - http:
+          path: agendamento
+          method: post
